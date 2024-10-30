@@ -1,0 +1,13 @@
+# folders
+.next
+node_modules/
+# files
+**/*.less
+**/*.css
+**/*.scss
+**/*.json
+**/*.png
+**/*.svg
+**/generated/**/*
+src/components/Example/index.tsx
+src/components/Example/index.stories.tsx
