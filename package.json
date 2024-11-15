@@ -25,7 +25,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b ./tsconfig.lib.json && vite build",
-    "watch": "tsc -b ./tsconfig.lib.json && vite build --watch",
+    "watch-tsc": "tsc -b ./tsconfig.lib.json --watch",
+    "watch-vite": "vite build --watch",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepublishOnly": "npm run build",
@@ -77,6 +78,7 @@
     "vite": "^5.2.0",
     "vite-plugin-dts": "^4.3.0",
     "vite-plugin-lib-inject-css": "^2.1.1",
+    "vite-plugin-restart": "^0.4.1",
     "vitest": "^2.1.4"
   }
 }

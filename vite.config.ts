@@ -5,6 +5,7 @@ import { extname, relative, resolve } from "path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
+import ViteRestart from "vite-plugin-restart";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,6 +15,9 @@ export default defineConfig({
     dts({
       tsconfigPath: resolve(__dirname, "tsconfig.lib.json"),
       insertTypesEntry: true,
+    }),
+    ViteRestart({
+      restart: ["./dist/*.*", "./dist/**/*.*"],
     }),
   ],
   build: {
