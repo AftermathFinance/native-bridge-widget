@@ -1,0 +1,24 @@
+:root {
+  /* Colors */
+  --primary-color: #4da2ff;
+  --secondary-color: #1f1f1f;
+  --background-primary: #030f1c;
+  --background-secondary: #f7f7f8;
+  --background-accent1: #4da2ff;
+  --background-accent1Hover: #1988ff;
+  --background-accent2: #c0e6ff;
+  --background-tertiary: rgba(247, 247, 248, 0.24);
+  --background-inverted: #ffffff;
+  --stroke-primary: rgba(247, 247, 248, 0.08);
+  --content-primary: #f7f7f8;
+  --content-secondary: #abbdcc;
+  --content-tertiary: #91a3b1;
+  --content-inveted: #030f1c;
+
+  /* Fonts */
+  --font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+    Arial, sans-serif;
+
+  /* Spacing */
+  --border-radius-base: 16px;
+}

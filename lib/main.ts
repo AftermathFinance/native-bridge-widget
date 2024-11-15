@@ -1,3 +1,4 @@
-import { Button } from "./components/button";
+import { Bridge } from "./features/bridge/bridge";
+import "./theme/theme.css";
 
-export { Button };
+export { Bridge };

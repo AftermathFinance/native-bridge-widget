@@ -13,6 +13,7 @@ export default defineConfig({
     libInjectCss(),
     dts({
       tsconfigPath: resolve(__dirname, "tsconfig.lib.json"),
+      insertTypesEntry: true,
     }),
   ],
   build: {
@@ -20,6 +21,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "lib/main.ts"),
       formats: ["es"],
+      name: "sui-bridge-react",
     },
     rollupOptions: {
       external: ["react", "react/jsx-runtime"],
@@ -27,7 +29,7 @@ export default defineConfig({
         // https://rollupjs.org/configuration-options/#input
         glob
           .sync("lib/**/*.{ts,tsx}", {
-            ignore: ["lib/**/*.d.ts"],
+            ignore: ["lib/**/*.d.ts", "lib/stories/**"],
           })
           .map((file) => [
             // 1. The name of the entry point

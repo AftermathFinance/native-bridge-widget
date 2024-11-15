@@ -1,0 +1,55 @@
+.xLarge {
+  color: var(--primary-color);
+  font-size: 32px;
+  line-height: 40px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.large {
+  color: var(--primary-color);
+  font-size: 28px;
+  line-height: 32px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.body {
+  color: var(--primary-color);
+  font-size: 14px;
+  line-height: 20px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.label {
+  color: var(--primary-color);
+  font-size: 15px;
+  line-height: 24px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.labelSmall {
+  color: var(--primary-color);
+  font-size: 12px;
+  line-height: 16px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.labelXSmall {
+  color: var(--primary-color);
+  font-size: 11px;
+  line-height: 12px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.colorSecondary {
+  color: var(--content-secondary);
+}
+
+.colorInverted {
+  color: var(--content-inveted);
+}

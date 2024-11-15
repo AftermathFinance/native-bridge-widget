@@ -1,0 +1,4 @@
+.root {
+  font-family: var(--font-family);
+  color: var(--content-primary);
+}
