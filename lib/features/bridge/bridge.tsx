@@ -1,10 +1,15 @@
 import { Button } from "../../components/button/button";
-import globals from "../../theme/globals.module.css";
+import { Card, Style } from "../../components/card/card";
+
 import typography from "../../theme/typography.module.css";
 
-export const Bridge = () => {
+export interface BridgeConfig {
+  style: Style;
+}
+
+export const Bridge = ({ style }: BridgeConfig) => {
   return (
-    <div className={globals.root}>
+    <Card customStyle={style}>
       <h1 className={typography.xLarge}>Bridge test</h1>
       <h1 className={typography.xLarge}>Bridge test</h1>
       <h1 className={typography.xLarge}>Bridge test</h1>
@@ -12,6 +17,6 @@ export const Bridge = () => {
 
       <p className={typography.body}>This is a bridge</p>
       <Button onClick={() => {}} label="Button" />
-    </div>
+    </Card>
   );
 };

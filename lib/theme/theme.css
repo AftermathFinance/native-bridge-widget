@@ -1,19 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 :root {
   /* Colors */
   --primary-color: #4da2ff;
   --secondary-color: #1f1f1f;
+
   --background-primary: #030f1c;
-  --background-secondary: #f7f7f8;
+  --background-secondary: rgba(247, 247, 248, 0.04);
   --background-accent1: #4da2ff;
   --background-accent1Hover: #1988ff;
   --background-accent2: #c0e6ff;
+  --background-primary: #030f1c;
   --background-tertiary: rgba(247, 247, 248, 0.24);
+  --background-tertiaryHover: rgba(247, 247, 248, 0.4);
   --background-inverted: #ffffff;
+
   --stroke-primary: rgba(247, 247, 248, 0.08);
+  --stroke-secondary: rgba(247, 247, 248, 0.16);
+
   --content-primary: #f7f7f8;
   --content-secondary: #abbdcc;
   --content-tertiary: #91a3b1;
-  --content-inveted: #030f1c;
+  --content-inverted: #030f1c;
+
+  --background-image: url("/background.jpg");
 
   /* Fonts */
   --font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
@@ -21,4 +31,7 @@
 
   /* Spacing */
   --border-radius-base: 16px;
+  --spacing-base: 16px;
+  --width: 480px;
+  --height: auto;
 }

@@ -20,8 +20,13 @@ export default defineConfig({
       restart: ["./dist/*.*", "./dist/**/*.*"],
     }),
   ],
+  resolve: {
+    alias: {
+      "@lib": resolve(__dirname, "lib"),
+    },
+  },
   build: {
-    copyPublicDir: false,
+    copyPublicDir: true,
     lib: {
       entry: resolve(__dirname, "lib/main.ts"),
       formats: ["es"],

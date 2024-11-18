@@ -1,5 +1,6 @@
 .xLarge {
-  color: var(--primary-color);
+  font-family: var(--font-family);
+  color: var(--content-primary);
   font-size: 32px;
   line-height: 40px;
   font-style: normal;
@@ -7,7 +8,8 @@
 }
 
 .large {
-  color: var(--primary-color);
+  font-family: var(--font-family);
+  color: var(--content-primary);
   font-size: 28px;
   line-height: 32px;
   font-style: normal;
@@ -15,7 +17,8 @@
 }
 
 .body {
-  color: var(--primary-color);
+  font-family: var(--font-family);
+  color: var(--content-primary);
   font-size: 14px;
   line-height: 20px;
   font-style: normal;
@@ -23,7 +26,8 @@
 }
 
 .label {
-  color: var(--primary-color);
+  font-family: var(--font-family);
+  color: var(--content-primary);
   font-size: 15px;
   line-height: 24px;
   font-style: normal;
@@ -31,7 +35,8 @@
 }
 
 .labelSmall {
-  color: var(--primary-color);
+  font-family: var(--font-family);
+  color: var(--content-primary);
   font-size: 12px;
   line-height: 16px;
   font-style: normal;
@@ -39,7 +44,8 @@
 }
 
 .labelXSmall {
-  color: var(--primary-color);
+  font-family: var(--font-family);
+  color: var(--content-primary);
   font-size: 11px;
   line-height: 12px;
   font-style: normal;
@@ -47,9 +53,11 @@
 }
 
 .colorSecondary {
+  font-family: var(--font-family);
   color: var(--content-secondary);
 }
 
 .colorInverted {
-  color: var(--content-inveted);
+  font-family: var(--font-family);
+  color: var(--content-inverted);
 }

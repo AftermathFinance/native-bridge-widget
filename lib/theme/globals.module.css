@@ -1,5 +1,41 @@
 .root {
   font-family: var(--font-family);
   color: var(--content-primary);
-  display: contents;
+}
+
+.root *,
+.root *:before,
+.root *:after {
+  box-sizing: border-box;
+}
+
+.buttonReset,
+.inputReset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  line-height: normal;
+  cursor: pointer;
+  text-align: left;
+  -webkit-appearance: button;
+}
+.buttonReset::-moz-focus-inner,
+.inputReset::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.imageBg {
+  border-radius: calc(var(--border-radius-base) * 2);
+  overflow: hidden;
+  display: flex;
+  box-sizing: border-box;
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
 }

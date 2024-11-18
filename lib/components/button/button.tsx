@@ -1,4 +1,6 @@
 import React, { forwardRef } from "react";
+import globals from "../../theme/globals.module.css";
+import typography from "../../theme/typography.module.css";
 import styles from "./button.module.css";
 
 export interface ButtonProps {
@@ -14,14 +16,14 @@ export const Button = forwardRef(function Button(
 ) {
   return (
     <button
-      className={styles.button}
+      className={`${globals.buttonReset} ${styles.button}`}
       onClick={onClick}
       disabled={disabled || isLoading}
       ref={ref as React.RefObject<HTMLButtonElement>}
     >
       {isLoading && <></>}
       {icon && icon}
-      <span className={styles.label}>{label}</span>
+      <span className={typography.label}>{label}</span>
     </button>
   );
 });

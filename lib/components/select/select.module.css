@@ -1,0 +1,72 @@
+.selectTrigger {
+  line-height: normal;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--border-radius-base) * 0.5);
+  padding: 4px;
+  gap: 4px;
+}
+.selectTrigger:hover,
+.selectTrigger:focus,
+.selectTrigger:focus-visible {
+  background-color: var(--background-secondary);
+  border: none;
+  outline: none;
+}
+.selectValue {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.selectContent {
+  overflow: hidden;
+  background-color: var(--background-primary);
+  border-radius: var(--border-radius-base);
+  border: 1px solid var(--stroke-secondary);
+  width: 160px;
+}
+
+.selectViewport {
+  padding: 8px;
+}
+
+.selectItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: calc(var(--border-radius-base) * 0.5);
+  cursor: pointer;
+}
+.selectItem:hover,
+.selectItem:focus,
+.selectItem:focus-visible {
+  background-color: var(--background-secondary);
+  border: none;
+  outline: none;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.itemLabel {
+  width: 100%;
+}
+/* if [data-state] === checked */
+[data-state="unchecked"] .itemLabel {
+  color: var(--content-secondary);
+}
+[data-state="unchecked"] .itemLabel:hover {
+  color: var(--content-primary);
+}

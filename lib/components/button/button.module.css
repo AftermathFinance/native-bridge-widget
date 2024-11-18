@@ -1,10 +1,6 @@
-/* height variable */
-:root {
-  --height: 40px;
-}
-
 .button {
-  background-color: var(--primary-color);
+  --height: 40px;
+  background-color: var(--background-accent1);
   height: var(--height);
   width: 100%;
   border-radius: var(--height);
@@ -20,16 +16,7 @@
   gap: 8px;
   position: relative;
 
-  white-space: nowrap;
-
-  font-size: 15px;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.label {
-  color: var(--content-primary);
-  font-weight: 500;
+  font-family: var(--font-family);
   font-size: 15px;
   line-height: 1;
   text-decoration: none;
@@ -37,7 +24,7 @@
 }
 
 .button:hover {
-  background-color: var(--background-accent);
+  background-color: var(--background-accent1Hover);
   text-decoration: none;
 }
 
