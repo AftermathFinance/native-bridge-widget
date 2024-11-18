@@ -20,11 +20,6 @@ export default defineConfig({
       restart: ["./dist/*.*", "./dist/**/*.*"],
     }),
   ],
-  resolve: {
-    alias: {
-      "@lib": resolve(__dirname, "lib"),
-    },
-  },
   build: {
     copyPublicDir: true,
     lib: {
@@ -33,7 +28,14 @@ export default defineConfig({
       name: "sui-bridge-react",
     },
     rollupOptions: {
-      external: ["react", "react/jsx-runtime"],
+      external: [
+        "react",
+        "react/jsx-runtime",
+        "react-dom",
+        "@tanstack/react-query",
+        "viem",
+        "wagmi",
+      ],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
         glob

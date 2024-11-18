@@ -11,13 +11,14 @@
   align-items: center;
   justify-content: center;
   border-radius: calc(var(--border-radius-base) * 0.5);
-  padding: 4px;
+  background-color: var(--background-secondary);
+  padding: 4px 8px;
   gap: 4px;
 }
 .selectTrigger:hover,
 .selectTrigger:focus,
 .selectTrigger:focus-visible {
-  background-color: var(--background-secondary);
+  background-color: var(--background-tertiary);
   border: none;
   outline: none;
 }

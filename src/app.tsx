@@ -1,10 +1,16 @@
-// https://nodejs.org/api/packages.html#packages_self_referencing_a_package_using_its_name
-import { Bridge } from "sui-bridge-react";
+import { Bridge, BridgeConfig } from "sui-bridge-react";
+import "./app.css";
 
 export function App() {
+  const config: BridgeConfig = {
+    style: {
+      hasBackgroundImage: true,
+    },
+  };
+
   return (
     <>
-      <Bridge />
+      <Bridge {...config} />
     </>
   );
 }

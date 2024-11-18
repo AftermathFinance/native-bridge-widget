@@ -61,3 +61,8 @@
   font-family: var(--font-family);
   color: var(--content-inverted);
 }
+
+.colorInvertedSecondary {
+  font-family: var(--font-family);
+  color: var(--content-inverted-secondary);
+}

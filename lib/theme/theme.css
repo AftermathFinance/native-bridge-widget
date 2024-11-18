@@ -5,29 +5,34 @@
   --primary-color: #4da2ff;
   --secondary-color: #1f1f1f;
 
+  /* Background */
   --background-primary: #030f1c;
-  --background-secondary: rgba(247, 247, 248, 0.04);
+  --background-secondary: rgba(247 247 248 / 4%);
   --background-accent1: #4da2ff;
-  --background-accent1Hover: #1988ff;
+  --background-accent1-hover: #1988ff;
   --background-accent2: #c0e6ff;
-  --background-primary: #030f1c;
-  --background-tertiary: rgba(247, 247, 248, 0.24);
-  --background-tertiaryHover: rgba(247, 247, 248, 0.4);
-  --background-inverted: #ffffff;
+  --background-tertiary: rgba(247 247 248 / 24%);
+  --background-tertiary-hover: rgba(247 247 248 / 40%);
+  --background-inverted: #fff;
 
-  --stroke-primary: rgba(247, 247, 248, 0.08);
-  --stroke-secondary: rgba(247, 247, 248, 0.16);
+  /* Stroke */
+  --stroke-primary: rgba(247 247 248 / 8%);
+  --stroke-secondary: rgba(247 247 248 / 16%);
 
+  /* Content */
   --content-primary: #f7f7f8;
   --content-secondary: #abbdcc;
   --content-tertiary: #91a3b1;
   --content-inverted: #030f1c;
+  --content-inverted-secondary: #485563;
+  --content-negative: #be2a3c;
 
+  /* Image */
   --background-image: url("/background.jpg");
 
   /* Fonts */
-  --font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
-    Arial, sans-serif;
+  --font-family: "Inter", "Roboto", "Helvetica Neue", "Arial Nova",
+    "Nimbus Sans", "Arial", sans-serif;
 
   /* Spacing */
   --border-radius-base: 16px;

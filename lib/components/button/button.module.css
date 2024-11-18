@@ -1,21 +1,17 @@
 .button {
   --height: 40px;
+
   background-color: var(--background-accent1);
   height: var(--height);
   width: 100%;
   border-radius: var(--height);
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 8px 16px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   gap: 8px;
   position: relative;
-
   font-family: var(--font-family);
   font-size: 15px;
   line-height: 1;
@@ -24,7 +20,7 @@
 }
 
 .button:hover {
-  background-color: var(--background-accent1Hover);
+  background-color: var(--background-accent1-hover);
   text-decoration: none;
 }
 

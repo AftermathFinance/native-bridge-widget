@@ -11,12 +11,13 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:react/jsx-runtime",
     "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:css-modules/recommended",
     "plugin:storybook/recommended",
     "prettier",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs", "node_modules/*"],
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "react-refresh", "check-file"],
+  plugins: ["@typescript-eslint", "react-refresh", "check-file", "css-modules"],
 
   rules: {
     "react-refresh/only-export-components": [

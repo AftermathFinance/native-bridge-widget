@@ -4,8 +4,8 @@
 }
 
 .root *,
-.root *:before,
-.root *:after {
+.root *::before,
+.root *::after {
   box-sizing: border-box;
 }
 
@@ -21,8 +21,9 @@
   line-height: normal;
   cursor: pointer;
   text-align: left;
-  -webkit-appearance: button;
+  appearance: button;
 }
+
 .buttonReset::-moz-focus-inner,
 .inputReset::-moz-focus-inner {
   border: 0;

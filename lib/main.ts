@@ -1,4 +1,5 @@
-import { Bridge } from "./features/bridge/bridge";
+import { Bridge, BridgeConfig } from "./features/bridge/bridge";
 import "./theme/theme.css";
 
 export { Bridge };
+export type { BridgeConfig };

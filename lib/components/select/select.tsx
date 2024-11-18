@@ -1,26 +1,27 @@
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { RefObject, forwardRef, useState } from "react";
+import { RefObject, forwardRef } from "react";
 import globals from "../../theme/globals.module.css";
 import typography from "../../theme/typography.module.css";
 import styles from "./select.module.css";
 
-interface SelectProps {
+export interface SelectProps {
   items: SelectItemProps[];
   defaultValue?: string;
   defaultOpen?: boolean;
   open?: boolean;
+  value: string;
+  onValueChange?: (value: string) => void;
 }
 
 export const Select = forwardRef(function Select(
-  { items, defaultValue, defaultOpen, open }: SelectProps,
+  { items, defaultValue, defaultOpen, open, value, onValueChange }: SelectProps,
   forwardedRef,
 ) {
-  const [value, setValue] = useState(defaultValue);
-
   return (
     <SelectPrimitive.Root
       value={value}
-      onValueChange={setValue}
+      onValueChange={onValueChange}
+      defaultValue={defaultValue}
       defaultOpen={defaultOpen}
       open={open}
     >
@@ -51,7 +52,11 @@ export const Select = forwardRef(function Select(
   );
 });
 
-const SelectContent = ({ items }: SelectProps) => {
+interface SelectContentProps {
+  items: SelectItemProps[];
+}
+
+const SelectContent = ({ items }: SelectContentProps) => {
   return (
     <SelectPrimitive.Content
       className={`${globals.root} ${styles.selectContent}`}

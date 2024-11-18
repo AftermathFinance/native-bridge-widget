@@ -21,6 +21,7 @@ type Story = StoryObj<typeof meta>;
 export const SelectTrigger: Story = {
   args: {
     defaultValue: "ETH",
+    value: "ETH",
     items: [
       { label: "ETH", icon: "/ETH.svg" },
       { label: "USDT", icon: "/USDT.svg" },
@@ -33,6 +34,7 @@ export const SelectTrigger: Story = {
 
 export const SelectContent: Story = {
   args: {
+    value: "ETH",
     defaultValue: "ETH",
     defaultOpen: true,
     open: true,

@@ -19,5 +19,18 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const ValueInputStory: Story = {
-  args: {},
+  args: {
+    balanceAmount: "0.00",
+    select: {
+      value: "ETH",
+      defaultValue: "ETH",
+      items: [
+        { label: "ETH", icon: "/ETH.svg" },
+        { label: "USDT", icon: "/USDT.svg" },
+        { label: "USDC", icon: "/USDC.svg" },
+        { label: "wBTC", icon: "/wBTC.svg" },
+        { label: "wETH", icon: "/wETH.svg" },
+      ],
+    },
+  },
 };
