@@ -1,6 +1,8 @@
 .root {
   font-family: var(--font-family);
   color: var(--content-primary);
+  width: var(--width);
+  height: var(--height);
 }
 
 .root *,

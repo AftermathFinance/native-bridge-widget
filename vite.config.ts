@@ -32,9 +32,12 @@ export default defineConfig({
         "react",
         "react/jsx-runtime",
         "react-dom",
-        "@tanstack/react-query",
-        "viem",
-        "wagmi",
+        // "@tanstack/react-query",
+        // "viem",
+        // "wagmi",
+        // "@radix-ui/react-select",
+        // "@reown/appkit",
+        // "@reown/appkit-adapter-wagmi",
       ],
       input: Object.fromEntries(
         // https://rollupjs.org/configuration-options/#input
@@ -52,6 +55,7 @@ export default defineConfig({
           ]),
       ),
       output: {
+        chunkFileNames: "chunks/[name].[hash].js",
         assetFileNames: "assets/[name][extname]",
         entryFileNames: "[name].js",
       },

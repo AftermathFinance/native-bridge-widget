@@ -28,11 +28,17 @@ export const BridgeContainer = ({ style }: BridgeContainerProps) => {
     },
     ethereum: {
       walletConnect: {
-        label: ethereum.address
-          ? addressToFriendly(ethereum.address)
-          : "Connect wallet",
+        label:
+          ethereum.ensName ??
+          (ethereum.address
+            ? addressToFriendly(ethereum.address)
+            : "Connect wallet"),
         state: ethereum.address ? "connected" : "disconnected",
-        onClick: ethereum.openConnectModal,
+        onClick: () => {
+          ethereum.address
+            ? ethereum.openConnectModal({ view: "Account" })
+            : ethereum.openConnectModal({ view: "Connect" });
+        },
       },
     },
     sui: {
