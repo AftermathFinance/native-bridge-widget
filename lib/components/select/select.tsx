@@ -75,25 +75,26 @@ interface SelectItemProps {
   icon: string;
 }
 
-export const SelectItem = forwardRef(
-  ({ label, icon, ...props }: SelectItemProps, forwardedRef) => {
-    return (
-      <SelectPrimitive.Item
-        {...props}
-        ref={forwardedRef as RefObject<HTMLDivElement>}
-        value={label}
-        className={`${globals.buttonReset} ${styles.selectItem}`}
-      >
-        <img src={icon} alt="" className={styles.icon} />
-        <SelectPrimitive.ItemText asChild>
-          <span className={`${styles.itemLabel} ${typography.label}`}>
-            {label}
-          </span>
-        </SelectPrimitive.ItemText>
-        <SelectPrimitive.ItemIndicator>
-          <img src="/check.svg" alt="" className={styles.icon} />
-        </SelectPrimitive.ItemIndicator>
-      </SelectPrimitive.Item>
-    );
-  },
-);
+export const SelectItem = forwardRef(function SelectItem(
+  { label, icon, ...props }: SelectItemProps,
+  forwardedRef,
+) {
+  return (
+    <SelectPrimitive.Item
+      {...props}
+      ref={forwardedRef as RefObject<HTMLDivElement>}
+      value={label}
+      className={`${globals.buttonReset} ${styles.selectItem}`}
+    >
+      <img src={icon} alt="" className={styles.icon} />
+      <SelectPrimitive.ItemText asChild>
+        <span className={`${styles.itemLabel} ${typography.label}`}>
+          {label}
+        </span>
+      </SelectPrimitive.ItemText>
+      <SelectPrimitive.ItemIndicator>
+        <img src="/check.svg" alt="" className={styles.icon} />
+      </SelectPrimitive.ItemIndicator>
+    </SelectPrimitive.Item>
+  );
+});

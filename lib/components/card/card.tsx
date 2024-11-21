@@ -24,7 +24,7 @@ export const Card = ({
 
   return (
     <div className={`${globals.root} ${rootClass}`}>
-      <div className={`${className} ${styles.card}`} {...divProps}>
+      <div className={`${styles.card} ${className}`} {...divProps}>
         {children}
       </div>
     </div>

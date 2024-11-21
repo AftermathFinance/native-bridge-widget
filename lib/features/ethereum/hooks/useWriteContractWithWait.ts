@@ -1,9 +1,10 @@
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
-import { WriteContractWithWait } from "./types";
+import { WriteContractWithWait } from "../types";
 
 export const useWriteContractWithWait = (): WriteContractWithWait => {
   const {
     writeContract: write,
+    writeContractAsync: writeAsync,
     data: hash,
     isPending: isWritePending,
     isError: isWriteError,
@@ -28,6 +29,7 @@ export const useWriteContractWithWait = (): WriteContractWithWait => {
     writeError,
     hash,
     write,
+    writeAsync,
     resetWrite,
   };
 };

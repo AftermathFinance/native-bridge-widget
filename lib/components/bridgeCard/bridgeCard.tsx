@@ -3,15 +3,17 @@ import typography from "../../theme/typography.module.css";
 import { Button, ButtonProps } from "../button/button";
 import { Card, Style } from "../card/card";
 import { ValueInput, ValueInputProps } from "../input/valueInput";
+import { ManualWalletSui } from "../walletConnect/manualWalletSui";
+import { ManualWalletProps } from "../walletConnect/types";
 import { WalletConnectEth } from "../walletConnect/walletConnectEth";
-import { WalletConnectSui } from "../walletConnect/walletConnectSui";
 import styles from "./bridgeCard.module.css";
 
+// TODO: cleanup eth/sui props
 export interface BridgeCardProps {
   cardStyle?: Style;
   valueInput: ValueInputProps;
   ethereum: BridgeChain;
-  sui: BridgeChain;
+  sui: ManualWalletProps;
   button: ButtonProps;
 }
 
@@ -29,7 +31,7 @@ export const BridgeCard = ({
 
       <div className={styles.walletWrapper}>
         <WalletConnectEth {...ethereum.walletConnect} />
-        <WalletConnectSui {...sui.walletConnect} />
+        <ManualWalletSui {...sui} />
       </div>
 
       <div className={styles.estimateWrapper}>

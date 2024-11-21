@@ -64,10 +64,6 @@
   color: var(--content-primary);
 }
 
-.inputField::input-placeholder {
-  color: var(--content-primary);
-}
-
 .inputField::-webkit-outer-spin-button,
 .inputField::-webkit-inner-spin-button {
   appearance: none;
@@ -79,7 +75,7 @@
 }
 
 .invalid {
-  color: var(--error-text-color);
+  color: var(--content-negative);
 }
 
 .balance {

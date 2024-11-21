@@ -34,3 +34,37 @@
   width: 24px;
   height: 24px;
 }
+
+.suiInput {
+  color: var(--content-inverted);
+  font-size: 28px;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  font-family: var(--font-family);
+  font-weight: 500;
+  height: 32px;
+  line-height: 32px;
+  margin: 0;
+  text-align: left;
+  appearance: none;
+  appearance: textfield;
+}
+
+.suiInput::placeholder {
+  color: var(--content-inverted-secondary);
+}
+
+.suiInputValid {
+  color: var(--content-inverted);
+}
+
+.suiInputInvalid {
+  color: var(--content-negative);
+}
+
+.suiInput::-webkit-outer-spin-button,
+.suiInput::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}

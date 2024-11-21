@@ -7,8 +7,8 @@ import {
   useReadContract,
   useReadContracts,
 } from "wagmi";
-import { stringNumberToLocale } from "../../utils/string";
-import { TokenBalance } from "./types";
+import { stringNumberToLocale } from "../../../utils/string";
+import { TokenBalance } from "../types";
 
 interface TokenBalanceReturnType {
   tokenBalance: TokenBalance;

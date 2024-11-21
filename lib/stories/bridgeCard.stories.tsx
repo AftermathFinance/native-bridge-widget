@@ -25,6 +25,7 @@ export const BridgeDisconnected: Story = {
   args: {
     cardStyle: { hasBackgroundImage: true },
     valueInput: {
+      value: "",
       balanceAmount: "0.0",
       placeholder: "0.0",
       select: {
@@ -43,11 +44,9 @@ export const BridgeDisconnected: Story = {
       },
     },
     sui: {
-      walletConnect: {
-        label: "Connect wallet",
-        state: "disconnected",
-        onClick: () => {},
-      },
+      onChange: () => {},
+      value: "",
+      valid: true,
     },
     button: {
       label: "Bridge assets",
@@ -61,6 +60,7 @@ export const BridgeConnectedEth: Story = {
   args: {
     cardStyle: { hasBackgroundImage: true },
     valueInput: {
+      value: "",
       balanceAmount: "0.0",
       placeholder: "0.0",
       select: {
@@ -79,11 +79,9 @@ export const BridgeConnectedEth: Story = {
       },
     },
     sui: {
-      walletConnect: {
-        label: "Connect wallet",
-        state: "disconnected",
-        onClick: () => {},
-      },
+      onChange: () => {},
+      value: "",
+      valid: true,
     },
     button: {
       label: "Bridge assets",
@@ -97,6 +95,7 @@ export const BridgeConnectedSui: Story = {
   args: {
     cardStyle: { hasBackgroundImage: true },
     valueInput: {
+      value: "",
       balanceAmount: "0.0",
       placeholder: "0.0",
       select: {
@@ -115,11 +114,9 @@ export const BridgeConnectedSui: Story = {
       },
     },
     sui: {
-      walletConnect: {
-        label: "orca.sui",
-        state: "connected",
-        onClick: () => {},
-      },
+      onChange: () => {},
+      value: "",
+      valid: true,
     },
     button: {
       label: "Bridge assets",
@@ -133,6 +130,7 @@ export const BridgeNoImage: Story = {
   args: {
     cardStyle: { hasBackgroundImage: false },
     valueInput: {
+      value: "",
       balanceAmount: "0.0",
       placeholder: "0.0",
       select: {
@@ -151,11 +149,9 @@ export const BridgeNoImage: Story = {
       },
     },
     sui: {
-      walletConnect: {
-        label: "Connect wallet",
-        state: "disconnected",
-        onClick: () => {},
-      },
+      onChange: () => {},
+      value: "",
+      valid: true,
     },
     button: {
       label: "Bridge assets",

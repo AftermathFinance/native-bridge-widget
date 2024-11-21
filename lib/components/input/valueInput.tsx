@@ -4,7 +4,7 @@ import { Select, SelectProps } from "../select/select";
 import styles from "./valueInput.module.css";
 
 export interface ValueInputProps {
-  value?: string;
+  value: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   balanceAmount?: string;
   placeholder?: string;
@@ -66,7 +66,7 @@ export const ValueInput = ({
           id={inputName}
           name={inputName}
           placeholder={placeholder}
-          value={value === "0" ? "" : value}
+          value={value}
           onChange={onChange}
           disabled={disabled}
           valid={valid || value === "0"}
@@ -112,7 +112,7 @@ const InputField = ({
       name={name}
       type="text"
       placeholder={placeholder ?? "0.0"}
-      value={value === "0" ? "" : value}
+      value={value}
       onChange={onChange}
       disabled={disabled}
       autoComplete="off"

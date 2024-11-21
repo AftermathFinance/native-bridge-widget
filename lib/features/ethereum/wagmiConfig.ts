@@ -11,7 +11,7 @@ import {
 } from "wagmi";
 
 // TODO: add chain logic
-export const chainEthereum = false ? mainnet : sepolia;
+export const chainEthereum = import.meta.env.IS_MAINNET ? mainnet : sepolia;
 
 const chains = [chainEthereum] as const;
 const chainIds = chains.map((chain) => chain.id).join(",");

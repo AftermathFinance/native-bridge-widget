@@ -1,7 +1,10 @@
 import { ChangeEvent } from "react";
 import { Config } from "wagmi";
-import { WriteContractMutate } from "wagmi/query";
-import { WalletConnectProps } from "../../components/walletConnect/types";
+import { WriteContractMutate, WriteContractMutateAsync } from "wagmi/query";
+import {
+  ManualWalletProps,
+  WalletConnectProps,
+} from "../../components/walletConnect/types";
 
 export interface WriteContractWithWait {
   isWritePending: boolean; // waiting for user to confirm TX
@@ -12,14 +15,15 @@ export interface WriteContractWithWait {
   writeError: Error | null; // prepare TX error
   hash: `0x${string}` | undefined;
   write: WriteContractMutate<Config, unknown>;
+  writeAsync?: WriteContractMutateAsync<Config, unknown>;
   resetWrite?: () => void;
+  canWrite?: boolean;
+  handleWrite?: () => void;
 }
 
 export interface WriteContractWithAmount extends WriteContractWithWait {
-  amount?: TokenBalance;
-  canWrite: boolean;
+  amount: TokenBalance;
   handleUserInput?: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleWrite?: () => void;
 }
 
 export interface TokenBalance {
@@ -32,5 +36,16 @@ export interface TokenBalance {
 }
 
 export interface BridgeChain {
-  walletConnect: WalletConnectProps;
+  walletConnect?: WalletConnectProps;
+  manualWallet?: ManualWalletProps;
+}
+
+export type BridgeTokenSymbols = "wETH";
+
+export interface BridgeToken {
+  address: `0x${string}`;
+  symbol: BridgeTokenSymbols;
+  decimals: number;
+  tokenID: number;
+  icon: string;
 }
