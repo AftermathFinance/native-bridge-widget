@@ -1,3 +1,7 @@
+export function isValidDecimalString(value: string) {
+  return /^\d*\.?\d*$/.test(value);
+}
+
 interface stringNumberToLocaleProps {
   value: string | undefined;
   decimals?: number;

@@ -33,6 +33,7 @@ export interface TokenBalance {
   decimals: number;
   symbol: string;
   refetch?: () => Promise<unknown>;
+  isLoading?: boolean;
 }
 
 export interface BridgeChain {

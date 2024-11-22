@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { bridgeAbi } from "../../../abi/bridgeAbi";
 import { parseStringToBigInt } from "../../../utils/numbers";
 import { stringNumberToInput } from "../../../utils/string";
@@ -52,13 +53,17 @@ export const useBridgeErc20 = ({
     selectedToken.decimals,
   );
 
-  const { tokenBalance } = useTokenBalance({
+  const { tokenBalance, isLoading: isTokenBalanceLoading } = useTokenBalance({
     tokenAddress: selectedToken.address,
   });
 
   const hasBalance = Boolean(tokenBalance?.value && tokenBalance.value > 0n);
 
-  const { allowanceWrite: allowance, currentAllowance } = useAllowance({
+  const {
+    allowanceWrite: allowance,
+    currentAllowance,
+    refetch: refetchAllowance,
+  } = useAllowance({
     token: selectedToken.address,
     spender: bridgeAddress,
     neededAmount: amountToBridgeValue,
@@ -101,12 +106,26 @@ export const useBridgeErc20 = ({
     }
   };
 
+  useEffect(() => {
+    if (isConfirmed && refetchAllowance) {
+      refetchAllowance().catch((error) => {
+        console.error("Refetching data failed:", error);
+      });
+      if (tokenBalance.refetch) {
+        tokenBalance.refetch().catch((error) => {
+          console.error("Refetching data failed:", error);
+        });
+      }
+    }
+  }, [isConfirmed, refetchAllowance, tokenBalance]);
+
   const amount: TokenBalance = {
     value: amountToBridgeValue,
     formatted: amountToBridge ?? "0",
     decimals: selectedToken.decimals,
     symbol: selectedTokenSymbol,
     display: amountDisplay,
+    isLoading: isTokenBalanceLoading,
   };
 
   return {

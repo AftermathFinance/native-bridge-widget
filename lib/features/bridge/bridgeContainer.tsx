@@ -6,8 +6,8 @@ import {
   BridgeCardProps,
 } from "../../components/bridgeCard/bridgeCard";
 import { Style } from "../../components/card/card";
-import { addressToFriendly } from "../../utils/address";
-import { stringNumberToInput } from "../../utils/string";
+import { addressToFriendly, isValidSuiAddress } from "../../utils/address";
+import { isValidDecimalString, stringNumberToInput } from "../../utils/string";
 import { getBridgeToken, getBridgeTokens } from "../ethereum/getBridgeToken";
 import { useBridgeErc20 } from "../ethereum/hooks/useBridgeErc20";
 import { useEthereum } from "../ethereum/hooks/useEthereum";
@@ -23,12 +23,13 @@ export const BridgeContainer = ({ style }: BridgeContainerProps) => {
 
   const [selectedTokenSymbol, setSelectedTokenSymbol] =
     useState<BridgeTokenSymbols>("wETH");
-
   const [recipient, setRecipient] = useState<string>("");
 
   const ethereum = useEthereum();
-  const { bridge, tokenBalance } = useBridgeErc20({
-    amountToBridge: deferredAmountToBridge,
+  const { bridge, tokenBalance, allowance } = useBridgeErc20({
+    amountToBridge: isValidDecimalString(deferredAmountToBridge)
+      ? deferredAmountToBridge
+      : "0",
     recipient,
     selectedTokenSymbol,
   });
@@ -40,6 +41,8 @@ export const BridgeContainer = ({ style }: BridgeContainerProps) => {
     isMainnet: ethereum.isMainnet,
     tokenSymbol: selectedTokenSymbol,
   });
+
+  console.log({ selectedToken, deferredAmountToBridge, recipient });
 
   const handleUserInput = (e: ChangeEvent<HTMLInputElement>) => {
     let { value } = e.target;
@@ -57,8 +60,10 @@ export const BridgeContainer = ({ style }: BridgeContainerProps) => {
     setRecipient(recipient as `0x${string}`);
   };
 
-  // it needs to be type `0x${string}`
-  const recipientIsValid = /^0x[a-fA-F0-9]{62}$/.test(recipient);
+  const recipientIsValid = isValidSuiAddress(recipient);
+  const inputIsValid =
+    bridge.amount.value <= tokenBalance.value &&
+    isValidDecimalString(deferredAmountToBridge);
 
   const bridgeItems = getBridgeTokens({ isMainnet: ethereum.isMainnet }).map(
     (token) => ({
@@ -79,7 +84,7 @@ export const BridgeContainer = ({ style }: BridgeContainerProps) => {
       placeholder: "0.0",
       value: bridge.amount.formatted,
       onChange: handleUserInput,
-      valid: bridge.amount.value <= tokenBalance.value,
+      valid: inputIsValid,
       inputName: "Bridge token amount",
     },
     ethereum: {
@@ -105,11 +110,23 @@ export const BridgeContainer = ({ style }: BridgeContainerProps) => {
       value: recipient,
       valid: recipientIsValid,
     },
-    button: {
-      label: "Bridge assets",
-      onClick: () => console.log("Bridge"),
-      disabled: !bridge.canWrite,
-    },
+    button:
+      !bridge.canWrite && allowance.canWrite
+        ? {
+            label: "Approve allowance",
+            onClick: allowance.handleWrite,
+            disabled: !allowance.canWrite || !recipientIsValid,
+            isLoading: allowance.isWritePending || allowance.isConfirming,
+          }
+        : {
+            label: "Bridge assets",
+            onClick: bridge.handleWrite,
+            disabled: !bridge.canWrite || !inputIsValid || !recipientIsValid,
+            isLoading:
+              bridge.isWritePending ||
+              bridge.isConfirming ||
+              tokenBalance.isLoading,
+          },
   };
 
   return <BridgeCard {...bridgeCardProps} />;

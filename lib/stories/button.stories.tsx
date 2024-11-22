@@ -23,3 +23,9 @@ export const PrimaryButton: Story = {
     label: "Primary Button",
   },
 };
+export const PrimaryButtonLoading: Story = {
+  args: {
+    label: "Primary Button",
+    isLoading: true,
+  },
+};

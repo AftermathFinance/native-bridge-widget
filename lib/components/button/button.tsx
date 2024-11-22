@@ -21,7 +21,7 @@ export const Button = forwardRef(function Button(
       disabled={disabled || isLoading}
       ref={ref as React.RefObject<HTMLButtonElement>}
     >
-      {isLoading && <></>}
+      {isLoading && <div className={styles.loader}></div>}
       {icon && icon}
       <span className={typography.label}>{label}</span>
     </button>
