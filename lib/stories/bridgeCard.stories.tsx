@@ -53,6 +53,10 @@ export const BridgeDisconnected: Story = {
       onClick: () => {},
       disabled: true,
     },
+    receive: {
+      amount: "0.0",
+      symbol: "SUI",
+    },
   } as BridgeCardProps,
 };
 
@@ -87,6 +91,10 @@ export const BridgeConnectedEth: Story = {
       label: "Bridge assets",
       onClick: () => {},
       disabled: true,
+    },
+    receive: {
+      amount: "0.0",
+      symbol: "SUI",
     },
   } as BridgeCardProps,
 };
@@ -123,6 +131,10 @@ export const BridgeConnectedSui: Story = {
       onClick: () => {},
       disabled: false,
     },
+    receive: {
+      amount: "0.0",
+      symbol: "SUI",
+    },
   } as BridgeCardProps,
 };
 
@@ -157,6 +169,10 @@ export const BridgeNoImage: Story = {
       label: "Bridge assets",
       onClick: () => {},
       disabled: true,
+    },
+    receive: {
+      amount: "0.0",
+      symbol: "SUI",
     },
   } as BridgeCardProps,
 };

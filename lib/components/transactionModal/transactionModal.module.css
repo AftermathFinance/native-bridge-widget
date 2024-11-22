@@ -1,0 +1,84 @@
+.txWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: var(--spacing-base);
+  background-color: var(--background-secondary);
+  border-radius: calc(var(--border-radius-base) * 2);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.card {
+  padding-bottom: 12px;
+  border: 1px solid var(--stroke-secondary);
+  border-radius: calc(var(--border-radius-base));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--background-secondary);
+  padding: var(--spacing-base) calc(var(--spacing-base) * 0.75);
+  width: 100%;
+}
+
+.cardHeader img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.cardBody {
+  padding: 0 var(--spacing-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.dataRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+  width: 100%;
+  gap: var(--spacing-base);
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+}
+
+.closeButton img {
+  width: 24px;
+  height: 24px;
+}

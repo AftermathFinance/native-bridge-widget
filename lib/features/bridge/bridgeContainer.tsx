@@ -127,6 +127,21 @@ export const BridgeContainer = ({ style }: BridgeContainerProps) => {
               bridge.isConfirming ||
               tokenBalance.isLoading,
           },
+    receive: {
+      amount: bridge.amount.display,
+      symbol: "ETH",
+    },
+    transaction: {
+      hash: bridge.hash,
+      transactionStatus: bridge.isConfirmed
+        ? "Completed"
+        : bridge.isError
+          ? "Failed"
+          : "Pending...",
+      address: ethereum.address,
+      recipient,
+      token: bridge.amount,
+    },
   };
 
   return <BridgeCard {...bridgeCardProps} />;
