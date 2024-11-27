@@ -1,7 +1,7 @@
 {
   "name": "sui-bridge-react",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.1.0",
+  "description": "React components that allow users to bridge ETH between Ethereum and Sui networks.",
   "author": "DarkSpace.studio",
   "license": "Apache-2.0",
   "private": false,

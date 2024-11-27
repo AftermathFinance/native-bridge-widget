@@ -57,6 +57,17 @@ export const BridgeDisconnected: Story = {
       amount: "0.0",
       symbol: "SUI",
     },
+    transaction: {
+      recipient: "0x12345678",
+      token: {
+        value: 1548641000000000000n,
+        formatted: "1.548641",
+        decimals: 18,
+        display: "1.548641",
+        symbol: "ETH",
+      },
+      transactionStatus: "Pending...",
+    },
   } as BridgeCardProps,
 };
 
@@ -95,6 +106,17 @@ export const BridgeConnectedEth: Story = {
     receive: {
       amount: "0.0",
       symbol: "SUI",
+    },
+    transaction: {
+      recipient: "0x12345678",
+      token: {
+        value: 1548641000000000000n,
+        formatted: "1.548641",
+        decimals: 18,
+        display: "1.548641",
+        symbol: "ETH",
+      },
+      transactionStatus: "Pending...",
     },
   } as BridgeCardProps,
 };
@@ -135,6 +157,17 @@ export const BridgeConnectedSui: Story = {
       amount: "0.0",
       symbol: "SUI",
     },
+    transaction: {
+      recipient: "0x12345678",
+      token: {
+        value: 1548641000000000000n,
+        formatted: "1.548641",
+        decimals: 18,
+        display: "1.548641",
+        symbol: "ETH",
+      },
+      transactionStatus: "Pending...",
+    },
   } as BridgeCardProps,
 };
 
@@ -173,6 +206,17 @@ export const BridgeNoImage: Story = {
     receive: {
       amount: "0.0",
       symbol: "SUI",
+    },
+    transaction: {
+      recipient: "0x12345678",
+      token: {
+        value: 1548641000000000000n,
+        formatted: "1.548641",
+        decimals: 18,
+        display: "1.548641",
+        symbol: "ETH",
+      },
+      transactionStatus: "Pending...",
     },
   } as BridgeCardProps,
 };
