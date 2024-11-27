@@ -14,18 +14,12 @@ npm install sui-bridge-react
 
 ## Usage
 
-Standalone usage.
+Basic standalone usage.
 
 ```tsx
 import { Bridge, BridgeConfig } from "sui-bridge-react";
 
 export function App() {
-  const config: BridgeConfig = {
-    style: {
-      hasBackgroundImage: true,
-    },
-  };
-
   return (
     <>
       <Bridge {...config} />
@@ -38,9 +32,6 @@ If your app has already installed `wagmi`, you can pass it's instance.
 
 ```tsx
 const config: BridgeConfig = {
-  style: {
-    hasBackgroundImage: true,
-  },
   wagmi: wagmiInstance,
   queryClient: queryClientInstance,
 };
@@ -49,6 +40,61 @@ const config: BridgeConfig = {
 ### Available tokens
 
 Currently the library supports bridging wETH only. More tokens will be added soon.
+
+### Customization
+
+`BridgeConfig` allows you to remove the background image to make the widget flat.
+
+```tsx
+const config: BridgeConfig = {
+  style: {
+    hasBackgroundImage: true,
+  },
+};
+```
+
+To customize the widgetʼs theme, you can change root CSS variables. Here is the primary theme.
+
+```css
+/* Main */
+--primary-color: #4da2ff;
+--secondary-color: #1f1f1f;
+
+/* Background */
+--background-primary: #030f1c;
+--background-secondary: rgba(247 247 248 / 4%);
+--background-accent1: #4da2ff;
+--background-accent1-hover: #1988ff;
+--background-accent2: #c0e6ff;
+--background-tertiary: rgba(247 247 248 / 24%);
+--background-tertiary-hover: rgba(247 247 248 / 40%);
+--background-inverted: #fff;
+
+/* Stroke */
+--stroke-primary: rgba(247 247 248 / 8%);
+--stroke-secondary: rgba(247 247 248 / 16%);
+
+/* Content */
+--content-primary: #f7f7f8;
+--content-secondary: #abbdcc;
+--content-tertiary: #91a3b1;
+--content-inverted: #030f1c;
+--content-inverted-secondary: #485563;
+--content-negative: #e23c50;
+
+/* Image */
+--background-image: url("/background.jpg");
+
+/* Fonts */
+--font-family: "Inter", "Roboto", "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+  "Arial", sans-serif;
+
+/* Spacing */
+--border-radius-base: 16px;
+--spacing-base: 16px;
+--width: 480px;
+--height: 564px;
+```
 
 ## Development
 
