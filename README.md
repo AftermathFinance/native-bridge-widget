@@ -46,6 +46,10 @@ const config: BridgeConfig = {
 };
 ```
 
+### Available tokens
+
+Currently the library supports bridging wETH only. More tokens will be added soon.
+
 ## Development
 
 You can test the library locally using vite.
