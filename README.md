@@ -43,7 +43,13 @@ Currently the library supports bridging wETH only. More tokens will be added soo
 
 ### Customization
 
-`BridgeConfig` allows you to remove the background image to make the widget flat.
+To include an example image in your documentation, you can use the following markdown:
+
+![Primary theme](example.png)
+
+This will display the `example.png` image in your documentation.
+
+`BridgeConfig` allows you to remove the background image to make the widget flat. More customization options will be added soon.
 
 ```tsx
 const config: BridgeConfig = {
