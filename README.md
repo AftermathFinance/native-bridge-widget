@@ -43,8 +43,6 @@ Currently the library supports bridging wETH only. More tokens will be added soo
 
 ### Customization
 
-To include an example image in your documentation, you can use the following markdown:
-
 ![Primary theme](example.png)
 
 This will display the `example.png` image in your documentation.
