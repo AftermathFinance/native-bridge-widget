@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 import { Config } from "wagmi";
+import { WriteContractReturnType } from "wagmi/actions";
 import { WriteContractMutate, WriteContractMutateAsync } from "wagmi/query";
 import {
   ManualWalletProps,
@@ -19,6 +20,7 @@ export interface WriteContractWithWait {
   resetWrite?: () => void;
   canWrite?: boolean;
   handleWrite?: () => void;
+  writeData?: WriteContractReturnType;
 }
 
 export interface WriteContractWithAmount extends WriteContractWithWait {
@@ -41,10 +43,10 @@ export interface BridgeChain {
   manualWallet?: ManualWalletProps;
 }
 
-export type BridgeTokenSymbols = "wETH";
+export type BridgeTokenSymbols = "wETH" | "ETH";
 
 export interface BridgeToken {
-  address: `0x${string}`;
+  address?: `0x${string}`;
   symbol: BridgeTokenSymbols;
   decimals: number;
   tokenID: number;

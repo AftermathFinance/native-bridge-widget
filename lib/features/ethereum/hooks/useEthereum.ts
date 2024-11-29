@@ -1,4 +1,5 @@
 import { useAppKit } from "@reown/appkit/react";
+import { useEffect } from "react";
 import { useAccount, useEnsName } from "wagmi";
 import { chainEthereum } from "../wagmiConfig";
 
@@ -11,6 +12,14 @@ export const useEthereum = () => {
 
   const isCorrectChain = chainId === chainEthereum.id && isConnected;
   const isMainnet = chainId === 1;
+
+  useEffect(() => {
+    if (address) {
+      console.log(
+        `You have connected to the Ethereum network with address ${address} and chain ID ${chainId}.`,
+      );
+    }
+  }, [address, chainId]);
 
   return {
     openConnectModal,

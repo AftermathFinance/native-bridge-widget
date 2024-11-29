@@ -14,8 +14,6 @@ import { useEthereum } from "./useEthereum";
 import { useTokenBalance } from "./useTokenBalance";
 import { useWriteContractWithWait } from "./useWriteContractWithWait";
 
-// TODO: Separate flow for ETH and ERC20
-
 export interface UseBridgeReturnType {
   bridge: WriteContractWithAmount;
   allowance: WriteContractWithWait;
@@ -64,7 +62,7 @@ export const useBridgeErc20 = ({
     currentAllowance,
     refetch: refetchAllowance,
   } = useAllowance({
-    token: selectedToken.address,
+    token: selectedToken.address!,
     spender: bridgeAddress,
     neededAmount: amountToBridgeValue,
   });

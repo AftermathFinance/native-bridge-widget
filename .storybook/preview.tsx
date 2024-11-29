@@ -9,6 +9,16 @@ import "../lib/theme/theme.css";
 
 const queryClient = new QueryClient();
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
+declare global {
+  interface BigInt {
+    toJSON: () => string;
+  }
+}
+BigInt.prototype.toJSON = function () {
+  return this.toString();
+};
+
 export const wagmiConfig = createConfig({
   chains: [mainnet, sepolia],
   transports: {

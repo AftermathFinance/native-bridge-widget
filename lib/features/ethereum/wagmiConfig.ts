@@ -9,16 +9,17 @@ import {
   noopStorage,
   serialize,
 } from "wagmi";
+import { getEnvVariable } from "../../utils/getEnvVariable";
 
-// TODO: add chain logic
-export const chainEthereum = import.meta.env.IS_MAINNET ? mainnet : sepolia;
+const IS_MAINNET = getEnvVariable("IS_MAINNET");
+const APP_KIT_PROJECT_ID = getEnvVariable("APP_KIT_PROJECT_ID") ?? "";
 
-const chains = [chainEthereum] as const;
+export const chainEthereum = IS_MAINNET === "true" ? mainnet : sepolia;
+
+const chains = [mainnet, sepolia] as const;
 const chainIds = chains.map((chain) => chain.id).join(",");
 const env = import.meta.env.VITE_ENV as string;
 const key = `wagmi-${env}-chains-${chainIds}`;
-
-const WALLET_CONNECT_PROJECT_ID = "eb014baebd65cd4b4407523fae4cc6d5";
 
 export const localWagmiAdapter = new WagmiAdapter({
   storage: createStorage({
@@ -31,7 +32,7 @@ export const localWagmiAdapter = new WagmiAdapter({
         : noopStorage,
   }),
   networks: [chainEthereum],
-  projectId: WALLET_CONNECT_PROJECT_ID,
+  projectId: APP_KIT_PROJECT_ID,
   transports: {
     [mainnet.id]: fallback([
       http("https://ethereum.publicnode.com"),
@@ -43,16 +44,19 @@ export const localWagmiAdapter = new WagmiAdapter({
     ]),
 
     [sepolia.id]: fallback([
+      http("https://eth-sepolia.public.blastapi.io"),
+      http("https://sepolia.drpc.org"),
+      http("https://endpoints.omniatech.io/v1/eth/sepolia/public"),
       http("https://ethereum-sepolia-rpc.publicnode.com"),
-      http(),
       http("https://gateway.tenderly.co/public/sepolia"),
+      http(),
     ]),
   },
 });
 
 createAppKit({
   adapters: [localWagmiAdapter],
-  projectId: WALLET_CONNECT_PROJECT_ID,
+  projectId: APP_KIT_PROJECT_ID,
   networks: [chainEthereum],
   features: {
     analytics: false,

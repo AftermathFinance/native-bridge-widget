@@ -10,6 +10,7 @@ export const useWriteContractWithWait = (): WriteContractWithWait => {
     isError: isWriteError,
     error: writeError,
     reset: resetWrite,
+    data: writeData,
   } = useWriteContract();
 
   const {
@@ -31,5 +32,6 @@ export const useWriteContractWithWait = (): WriteContractWithWait => {
     write,
     writeAsync,
     resetWrite,
+    writeData,
   };
 };

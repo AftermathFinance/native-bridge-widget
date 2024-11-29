@@ -40,7 +40,8 @@
   flex-direction: row;
   width: 100%;
   gap: 8px;
-  align-items: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding: 0 0 8px;
 }
 

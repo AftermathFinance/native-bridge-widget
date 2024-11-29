@@ -28,6 +28,20 @@ export function App() {
 }
 ```
 
+Bridge uses AppKit by Reown (WalletConnect). You have to pass your project ID to the configuration.
+
+```env
+APP_KIT_PROJECT_ID="abc123"
+```
+
+`.env` files are supported by default in Vite and Create React App.
+
+By default, Bridge uses Sepolia. To use it on mainnet, add the following configuration.
+
+```env
+IS_MAINNET=true
+```
+
 If your app has already installed `wagmi`, you can pass it's instance.
 
 ```tsx
