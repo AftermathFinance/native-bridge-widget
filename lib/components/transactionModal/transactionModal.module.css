@@ -10,7 +10,7 @@
   align-items: center;
   gap: 16px;
   padding: var(--spacing-base);
-  background-color: var(--background-secondary);
+  background-color: var(--background-primary);
   border-radius: calc(var(--border-radius-base) * 2);
 }
 
@@ -39,7 +39,7 @@
   align-items: center;
   gap: 8px;
   background-color: var(--background-secondary);
-  padding: var(--spacing-base) calc(var(--spacing-base) * 0.75);
+  padding: var(--spacing-base);
   width: 100%;
 }
 

@@ -1,6 +1,11 @@
-import { useEffect } from "react";
-import { encodeFunctionData, parseEther } from "viem";
-import { useBalance, useEstimateGas } from "wagmi";
+import { useCallback, useEffect, useState } from "react";
+import { parseEther } from "viem";
+import {
+  useBalance,
+  useEstimateFeesPerGas,
+  useGasPrice,
+  usePublicClient,
+} from "wagmi";
 import { bridgeAbi } from "../../../abi/bridgeAbi";
 import {
   stringNumberToInput,
@@ -13,6 +18,7 @@ import { useWriteContractWithWait } from "./useWriteContractWithWait";
 export interface UseBridgeReturnType {
   bridge: WriteContractWithAmount;
   tokenBalance: TokenBalance;
+  fee: bigint;
 }
 
 export interface UseBridgeEthProps {
@@ -24,7 +30,9 @@ export const useBridgeEth = ({
   amountToBridge,
   recipient,
 }: UseBridgeEthProps): UseBridgeReturnType => {
+  const [gasEstimate, setGasEstimate] = useState<bigint>(1n);
   const { isMainnet, isCorrectChain, address } = useEthereum();
+  const publicClient = usePublicClient();
 
   const bridgeAddress = isMainnet
     ? "0xda3bd1fe1973470312db04551b65f401bc8a92fd"
@@ -76,34 +84,57 @@ export const useBridgeEth = ({
     hash,
     write,
     resetWrite,
-    writeData,
   } = useWriteContractWithWait();
 
-  console.log("Write data", writeData);
+  const { data: feesPerGas } = useEstimateFeesPerGas();
+  const { data: gasPrice = 1n } = useGasPrice();
 
-  const calldata = encodeFunctionData({
-    abi: bridgeAbi,
-    functionName: "bridgeETH",
-    args: [recipient as `0x${string}`, destinationChainID],
-  });
+  const estimateGas = useCallback(async () => {
+    if (publicClient !== undefined && address !== undefined) {
+      try {
+        const estimate = await publicClient.estimateContractGas({
+          address: bridgeAddress,
+          abi: bridgeAbi,
+          functionName: "bridgeETH",
+          args: [
+            "0x9b72bf51cf9e936a41bf477fbf8bef25644147be1cdc429d03c4815923cbca51",
+            destinationChainID,
+          ],
+          value: 10000000000n,
+          account: address,
+        });
 
-  const result = useEstimateGas({
-    value: amountToBridgeValue,
-    to: bridgeAddress,
-    data: calldata,
-  });
+        setGasEstimate(estimate);
+        return estimate;
+      } catch (error) {
+        console.error("Estimate gas failed:", error);
+        throw new Error("Public client is undefined");
+      }
+    }
+  }, [publicClient, bridgeAddress, destinationChainID, address]);
 
-  console.log("Estimate gas result", result.data);
+  useEffect(() => {
+    if (address !== undefined) {
+      void estimateGas();
+    }
+  }, [address, estimateGas]);
+
+  const effectiveGasPrice = gasPrice || 1n;
+  const effectiveMaxPriorityFeePerGas =
+    feesPerGas?.maxPriorityFeePerGas || effectiveGasPrice;
+  const effectiveMaxFeePerGas = feesPerGas?.maxFeePerGas || effectiveGasPrice;
+
+  const fee =
+    gasEstimate * (effectiveMaxPriorityFeePerGas + effectiveMaxFeePerGas) * 10n;
 
   const handleBridgeWrite = () => {
-    // console.log("Bridge write");
     if (canBridge) {
       return write({
         address: bridgeAddress,
         abi: bridgeAbi,
         functionName: "bridgeETH",
         args: [recipient as `0x${string}`, destinationChainID],
-        value: amountToBridgeValue - (result.data ?? 0n),
+        value: amountToBridgeValue,
       });
     }
   };
@@ -119,7 +150,7 @@ export const useBridgeEth = ({
   }, [isConfirmed, refetchBalance]);
 
   const amount: TokenBalance = {
-    value: amountToBridgeValue - (result.data ?? 0n),
+    value: amountToBridgeValue,
     formatted: amountToBridge ?? "0",
     decimals: decimals,
     symbol: "ETH",
@@ -129,6 +160,7 @@ export const useBridgeEth = ({
 
   return {
     tokenBalance: ethBalance,
+    fee,
     bridge: {
       write,
       handleWrite: handleBridgeWrite,

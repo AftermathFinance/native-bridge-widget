@@ -7,6 +7,7 @@ export interface ValueInputProps {
   value: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   balanceAmount?: string;
+  maxAmount?: string;
   placeholder?: string;
   valid?: boolean;
   disabled?: boolean;
@@ -18,6 +19,7 @@ export const ValueInput = ({
   value,
   onChange,
   balanceAmount,
+  maxAmount,
   placeholder,
   valid = true,
   inputName,
@@ -25,11 +27,11 @@ export const ValueInput = ({
   select,
 }: ValueInputProps) => {
   const handleMaxButton = () => {
-    if (balanceAmount) {
+    if (maxAmount) {
       onChange &&
         onChange({
           target: {
-            value: balanceAmount,
+            value: maxAmount,
           },
         } as React.ChangeEvent<HTMLInputElement>);
     }

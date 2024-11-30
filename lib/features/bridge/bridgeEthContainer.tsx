@@ -1,5 +1,6 @@
 import { useDisconnect } from "@reown/appkit/react";
 import { ChangeEvent } from "react";
+import { formatEther } from "viem";
 import { useDisconnect as useDisconnectWagmi } from "wagmi";
 import {
   BridgeCard,
@@ -31,7 +32,7 @@ export const BridgeEthContainer = ({
   setSelectedTokenSymbol,
 }: BridgeEthContainerProps) => {
   const ethereum = useEthereum();
-  const { bridge, tokenBalance } = useBridgeEth({
+  const { bridge, tokenBalance, fee } = useBridgeEth({
     amountToBridge: isValidDecimalString(amountToBridge) ? amountToBridge : "0",
     recipient,
   });
@@ -73,6 +74,7 @@ export const BridgeEthContainer = ({
           setSelectedTokenSymbol(value as BridgeTokenSymbols),
       },
       balanceAmount: tokenBalance.display,
+      maxAmount: formatEther(tokenBalance.value - fee),
       placeholder: "0.0",
       value: bridge.amount.formatted,
       onChange: handleUserInput,

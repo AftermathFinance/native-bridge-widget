@@ -81,6 +81,7 @@ export const BridgeErc20Container = ({
           setSelectedTokenSymbol(value as BridgeTokenSymbols),
       },
       balanceAmount: tokenBalance.display,
+      maxAmount: tokenBalance.formatted,
       placeholder: "0.0",
       value: bridge.amount.formatted,
       onChange: handleUserInput,

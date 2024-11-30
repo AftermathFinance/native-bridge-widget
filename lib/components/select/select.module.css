@@ -3,10 +3,8 @@
   border: none;
   font-family: inherit;
   cursor: pointer;
-  background-color: transparent;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   white-space: nowrap;
   align-items: center;
   justify-content: center;
@@ -15,6 +13,7 @@
   padding: 4px 8px;
   gap: 4px;
 }
+
 .selectTrigger:hover,
 .selectTrigger:focus,
 .selectTrigger:focus-visible {
@@ -22,6 +21,7 @@
   border: none;
   outline: none;
 }
+
 .selectValue {
   display: inline-flex;
   align-items: center;
@@ -34,6 +34,7 @@
   border-radius: var(--border-radius-base);
   border: 1px solid var(--stroke-secondary);
   width: 160px;
+  height: auto;
 }
 
 .selectViewport {
@@ -48,6 +49,7 @@
   border-radius: calc(var(--border-radius-base) * 0.5);
   cursor: pointer;
 }
+
 .selectItem:hover,
 .selectItem:focus,
 .selectItem:focus-visible {
@@ -64,10 +66,12 @@
 .itemLabel {
   width: 100%;
 }
+
 /* if [data-state] === checked */
 [data-state="unchecked"] .itemLabel {
   color: var(--content-secondary);
 }
+
 [data-state="unchecked"] .itemLabel:hover {
   color: var(--content-primary);
 }
