@@ -1,0 +1,68 @@
+.xLarge {
+  font-family: var(--font-family);
+  color: var(--content-primary);
+  font-size: 32px;
+  line-height: 40px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.large {
+  font-family: var(--font-family);
+  color: var(--content-primary);
+  font-size: 28px;
+  line-height: 32px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.body {
+  font-family: var(--font-family);
+  color: var(--content-primary);
+  font-size: 14px;
+  line-height: 20px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.label {
+  font-family: var(--font-family);
+  color: var(--content-primary);
+  font-size: 15px;
+  line-height: 24px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.labelSmall {
+  font-family: var(--font-family);
+  color: var(--content-primary);
+  font-size: 12px;
+  line-height: 16px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.labelXSmall {
+  font-family: var(--font-family);
+  color: var(--content-primary);
+  font-size: 11px;
+  line-height: 12px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.colorSecondary {
+  font-family: var(--font-family);
+  color: var(--content-secondary);
+}
+
+.colorInverted {
+  font-family: var(--font-family);
+  color: var(--content-inverted);
+}
+
+.colorInvertedSecondary {
+  font-family: var(--font-family);
+  color: var(--content-inverted-secondary);
+}

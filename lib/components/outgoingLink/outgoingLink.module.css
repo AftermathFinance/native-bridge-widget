@@ -1,0 +1,19 @@
+.link,
+.link span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--background-accent1);
+  text-decoration: none;
+}
+
+.link:hover,
+.link span:hover {
+  color: var(--background-accent1-hover);
+}
+
+.link-img {
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,93 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 24px 24px 32px;
+  background-color: transparent;
+  border: 1px solid var(--stroke-primary);
+  border-color: var(--stroke-primary);
+  border-radius: var(--border-radius-base);
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.wrapper:focus-within {
+  border: 1px solid var(--stroke-secondary);
+}
+
+.tokenRow {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 32px;
+}
+
+.maxButton {
+  background-color: var(--background-tertiary);
+  height: 24px;
+  padding: 0 12px;
+  border-radius: var(--border-radius-base);
+}
+
+.maxButton:hover {
+  background-color: var(--background-tertiary-hover);
+}
+
+.inputRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 8px;
+}
+
+.inputField {
+  color: var(--content-primary);
+  font-size: 32px;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  font-family: var(--font-family);
+  font-weight: 500;
+  height: 40px;
+  line-height: 40px;
+  margin: 0;
+  text-align: left;
+  appearance: none;
+  appearance: textfield;
+}
+
+.inputField::placeholder {
+  color: var(--content-primary);
+}
+
+.inputField::-webkit-outer-spin-button,
+.inputField::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.valid {
+  color: var(--content-primary);
+}
+
+.invalid {
+  color: var(--content-negative);
+}
+
+.balance {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.walletIcon {
+  width: 12px;
+  height: 12px;
+}
