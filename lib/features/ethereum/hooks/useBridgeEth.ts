@@ -108,7 +108,6 @@ export const useBridgeEth = ({
         return estimate;
       } catch (error) {
         console.error("Estimate gas failed:", error);
-        throw new Error("Public client is undefined");
       }
     }
   }, [publicClient, bridgeAddress, destinationChainID, address]);

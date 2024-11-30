@@ -1,9 +1,10 @@
 import { useAppKit } from "@reown/appkit/react";
 import { useEffect } from "react";
 import { useAccount, useEnsName } from "wagmi";
-import { chainEthereum } from "../wagmiConfig";
+import { useChainEthereum } from "./useChainEthereum";
 
 export const useEthereum = () => {
+  const chainEthereum = useChainEthereum();
   const { open: openConnectModal } = useAppKit();
   const { address, isConnected, chainId } = useAccount();
   const { data: ensName } = useEnsName({

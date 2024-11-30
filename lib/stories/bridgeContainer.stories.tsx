@@ -1,17 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { QueryClient } from "@tanstack/react-query";
-import { mainnet, sepolia } from "viem/chains";
-import { createConfig, http } from "wagmi";
 import { BridgeContainer } from "../features/bridge/bridgeContainer";
-
-const queryClient = new QueryClient();
-export const wagmiConfig = createConfig({
-  chains: [mainnet, sepolia],
-  transports: {
-    [mainnet.id]: http(),
-    [sepolia.id]: http(),
-  },
-});
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta = {
@@ -29,10 +17,8 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const BridgeDisconnected: Story = {
+export const BridgeStory: Story = {
   args: {
     style: { hasBackgroundImage: true },
-    queryClient,
-    wagmiConfig,
   },
 };

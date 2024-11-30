@@ -1,8 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useMemo } from "react";
 import { Config, WagmiProvider } from "wagmi";
 import { hashFn } from "wagmi/query";
 import { Style } from "../../components/card/card";
-import { localWagmiAdapter } from "../ethereum/wagmiConfig";
+import { ChainProvider } from "../ethereum/hooks/useChainEthereum";
+import { initializeAppKit } from "../ethereum/wagmiConfig";
 import { BridgeContainer } from "./bridgeContainer";
 
 const localQueryClient = new QueryClient({
@@ -19,17 +21,35 @@ export interface BridgeConfig {
   style: Style;
   wagmiConfig?: Config;
   queryClient?: QueryClient;
+  appKitProjectId: string;
+  isMainnet: boolean;
 }
 
-export const Bridge = ({ style, wagmiConfig, queryClient }: BridgeConfig) => {
-  const config = wagmiConfig ?? localWagmiAdapter.wagmiConfig;
-  const client = queryClient ?? localQueryClient;
+export const Bridge = (bridgeConfig: BridgeConfig) => {
+  const client = useMemo(
+    () => bridgeConfig.queryClient ?? localQueryClient,
+    [bridgeConfig.queryClient],
+  );
+
+  const { wagmiConfig, chainEthereum } = useMemo(() => {
+    // Initialize AppKit and WagmiAdapter using the dynamic bridgeConfig
+    const { appKit, localWagmiAdapter, chainEthereum } =
+      initializeAppKit(bridgeConfig);
+
+    return {
+      appKit,
+      wagmiConfig: bridgeConfig.wagmiConfig ?? localWagmiAdapter.wagmiConfig,
+      chainEthereum,
+    };
+  }, [bridgeConfig]);
 
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={client}>
-        <BridgeContainer style={style} />
-      </QueryClientProvider>
-    </WagmiProvider>
+    <ChainProvider chainEthereum={chainEthereum}>
+      <WagmiProvider config={wagmiConfig}>
+        <QueryClientProvider client={client}>
+          <BridgeContainer style={bridgeConfig.style} />
+        </QueryClientProvider>
+      </WagmiProvider>
+    </ChainProvider>
   );
 };

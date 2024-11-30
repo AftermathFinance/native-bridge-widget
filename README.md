@@ -2,7 +2,7 @@
 
 ---
 
-This repository contains React components that allow users to bridge ETH between Ethereum and Sui networks. Library is fully typed and self contained.
+This repository contains React components that allow users to bridge Ethereum and Sui networks. Library is fully typed and self contained.
 
 ## Installation
 
@@ -19,6 +19,11 @@ Basic standalone usage.
 ```tsx
 import { Bridge, BridgeConfig } from "sui-bridge-react";
 
+const config: BridgeConfig = {
+  appKitProjectId: "your-project-id",
+  isMainnet: false,
+};
+
 export function App() {
   return (
     <>
@@ -28,18 +33,14 @@ export function App() {
 }
 ```
 
-Bridge uses AppKit by Reown (WalletConnect). You have to pass your project ID to the configuration.
-
-```env
-APP_KIT_PROJECT_ID="abc123"
-```
-
-`.env` files are supported by default in Vite and Create React App.
+Bridge uses AppKit by Reown (WalletConnect). You have to pass your project ID to the configuration or bridge will not work.
 
 By default, Bridge uses Sepolia. To use it on mainnet, add the following configuration.
 
-```env
-IS_MAINNET=true
+```tsx
+const config: BridgeConfig = {
+  isMainnet: false,
+};
 ```
 
 If your app has already installed `wagmi`, you can pass it's instance.
@@ -53,7 +54,7 @@ const config: BridgeConfig = {
 
 ### Available tokens
 
-Currently the library supports bridging wETH only. More tokens will be added soon.
+Currently the library supports bridging native ETH and wETH. More tokens might be added in the future.
 
 ### Customization
 
@@ -71,7 +72,7 @@ const config: BridgeConfig = {
 };
 ```
 
-To customize the widgetʼs theme, you can change root CSS variables. Here is the primary theme.
+To customize the widget's theme, you can change root CSS variables. Here is the primary theme.
 
 ```css
 /* Main */
@@ -116,7 +117,7 @@ To customize the widgetʼs theme, you can change root CSS variables. Here is the
 
 ## Development
 
-You can test the library locally using vite.
+You can test the library locally using Vite.
 
 ```bash
 npm run build
