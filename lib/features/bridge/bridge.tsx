@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { Config, WagmiProvider } from "wagmi";
 import { hashFn } from "wagmi/query";
 import { Style } from "../../components/card/card";
-import { ChainProvider } from "../ethereum/hooks/useChainEthereum";
+import { ChainProvider } from "../ethereum/chainEthereumProvider";
 import { initializeAppKit } from "../ethereum/wagmiConfig";
 import { BridgeContainer } from "./bridgeContainer";
 
