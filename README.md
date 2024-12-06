@@ -39,7 +39,7 @@ By default, Bridge uses Sepolia. To use it on mainnet, add the following configu
 
 ```tsx
 const config: BridgeConfig = {
-  isMainnet: false,
+  isMainnet: true,
 };
 ```
 
