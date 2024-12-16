@@ -2,10 +2,12 @@ import { BridgeToken, BridgeTokenSymbols } from "./types";
 
 export interface GetBridgeTokensProps {
   isMainnet: boolean;
+  tokenList: BridgeTokenSymbols[];
 }
 
 export const getBridgeTokens = ({
   isMainnet,
+  tokenList,
 }: GetBridgeTokensProps): BridgeToken[] => {
   const mainnetTokens: BridgeToken[] = [
     {
@@ -39,7 +41,19 @@ export const getBridgeTokens = ({
     },
   ];
 
-  return isMainnet ? mainnetTokens : sepoliaTokens;
+  if (tokenList.length === 0) {
+    return isMainnet ? mainnetTokens : sepoliaTokens;
+  }
+
+  const tokens = tokenList.map((tokenSymbol) => {
+    if (tokenSymbol === "ETH") {
+      return mainnetTokens.find((token) => token.symbol === tokenSymbol);
+    }
+
+    return sepoliaTokens.find((token) => token.symbol === tokenSymbol);
+  });
+
+  return tokens as BridgeToken[];
 };
 
 export interface GetBridgeTokenProps {
@@ -51,7 +65,7 @@ export const getBridgeToken = ({
   isMainnet,
   tokenSymbol,
 }: GetBridgeTokenProps): BridgeToken => {
-  const tokens = getBridgeTokens({ isMainnet });
+  const tokens = getBridgeTokens({ isMainnet, tokenList: [] });
 
   const token = tokens.find((token) => token.symbol === tokenSymbol);
 

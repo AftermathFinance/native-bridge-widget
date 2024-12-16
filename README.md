@@ -56,6 +56,14 @@ const config: BridgeConfig = {
 
 Currently the library supports bridging native ETH and wETH. More tokens might be added in the future.
 
+You can customize the list of available tokens by passing optional `tokenList` prop. By default all tokens are enabled.
+
+```tsx
+const config: BridgeConfig = {
+  tokenList: ["ETH", "wETH"],
+};
+```
+
 ### Customization
 
 ![Primary theme](example.png)
