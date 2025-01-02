@@ -9,7 +9,7 @@ This repository contains React components that allow users to bridge Ethereum an
 Library is assuming your project is using `react` and `react-dom` as dependencies.
 
 ```bash
-npm install sui-bridge-react
+npm install @aftermath/sui-bridge-react
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ npm install sui-bridge-react
 Basic standalone usage.
 
 ```tsx
-import { Bridge, BridgeConfig } from "sui-bridge-react";
+import { Bridge, BridgeConfig } from "@aftermath/sui-bridge-react";
 
 const config: BridgeConfig = {
   appKitProjectId: "your-project-id",
@@ -39,7 +39,7 @@ By default, Bridge uses Sepolia. To use it on mainnet, add the following configu
 
 ```tsx
 const config: BridgeConfig = {
-  isMainnet: false,
+  isMainnet: true,
 };
 ```
 
@@ -55,6 +55,19 @@ const config: BridgeConfig = {
 ### Available tokens
 
 Currently the library supports bridging native ETH and wETH. More tokens might be added in the future.
+
+You can customize the list of available tokens by passing optional `tokenIds` prop. By default all tokens are enabled. Native ETH is always enabled, only ERC20 tokens can be customized. Currently only wETH is supported.
+
+| tokenId | symbol |
+| ------- | ------ |
+| n/a     | ETH    |
+| 2       | wETH   |
+
+```tsx
+const config: BridgeConfig = {
+  tokenIds: [2],
+};
+```
 
 ### Customization
 

@@ -4,7 +4,6 @@ import { parseStringToBigInt } from "../../../utils/numbers";
 import { stringNumberToInput } from "../../../utils/string";
 import { getBridgeToken } from "../getBridgeToken";
 import {
-  BridgeTokenSymbols,
   TokenBalance,
   WriteContractWithAmount,
   WriteContractWithWait,
@@ -22,7 +21,7 @@ export interface UseBridgeReturnType {
 
 export interface UseBridgeErc20Props {
   amountToBridge: string;
-  selectedTokenSymbol: BridgeTokenSymbols;
+  selectedTokenSymbol: string;
   recipient?: string;
 }
 
@@ -95,7 +94,7 @@ export const useBridgeErc20 = ({
         abi: bridgeAbi,
         functionName: "bridgeERC20",
         args: [
-          selectedToken.tokenID,
+          selectedToken.tokenId,
           amountToBridgeValue,
           recipient as `0x${string}`,
           destinationChainID,

@@ -4,6 +4,8 @@ import { Config, WagmiProvider } from "wagmi";
 import { hashFn } from "wagmi/query";
 import { Style } from "../../components/card/card";
 import { ChainProvider } from "../ethereum/chainEthereumProvider";
+import { TokenIdsProvider } from "../ethereum/tokenIdsProvider";
+import { BridgeTokenId } from "../ethereum/types";
 import { initializeAppKit } from "../ethereum/wagmiConfig";
 import { BridgeContainer } from "./bridgeContainer";
 
@@ -23,6 +25,7 @@ export interface BridgeConfig {
   queryClient?: QueryClient;
   appKitProjectId: string;
   isMainnet: boolean;
+  tokenIds?: BridgeTokenId[];
 }
 
 export const Bridge = (bridgeConfig: BridgeConfig) => {
@@ -47,7 +50,9 @@ export const Bridge = (bridgeConfig: BridgeConfig) => {
     <ChainProvider chainEthereum={chainEthereum}>
       <WagmiProvider config={wagmiConfig}>
         <QueryClientProvider client={client}>
-          <BridgeContainer style={bridgeConfig.style} />
+          <TokenIdsProvider tokenIds={bridgeConfig.tokenIds ?? [2]}>
+            <BridgeContainer style={bridgeConfig.style} />
+          </TokenIdsProvider>
         </QueryClientProvider>
       </WagmiProvider>
     </ChainProvider>

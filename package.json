@@ -1,5 +1,5 @@
 {
-  "name": "sui-bridge-react",
+  "name": "@aftermath/sui-bridge-react",
   "version": "0.1.0",
   "description": "React components that allow users to bridge ETH between Ethereum and Sui networks.",
   "author": "DarkSpace.studio",

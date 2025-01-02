@@ -1,6 +1,5 @@
 import { useDeferredValue, useState } from "react";
 import { Style } from "../../components/card/card";
-import { BridgeTokenSymbols } from "../ethereum/types";
 import { BridgeErc20Container } from "./bridgeErc20Container";
 import { BridgeEthContainer } from "./bridgeEthContainer";
 
@@ -12,8 +11,7 @@ export const BridgeContainer = ({ style }: BridgeContainerProps) => {
   const [amountToBridge, setAmountToBridge] = useState<string>("");
   const deferredAmountToBridge = useDeferredValue(amountToBridge);
 
-  const [selectedTokenSymbol, setSelectedTokenSymbol] =
-    useState<BridgeTokenSymbols>("ETH");
+  const [selectedTokenSymbol, setSelectedTokenSymbol] = useState<string>("ETH");
   const [recipient, setRecipient] = useState<string>("");
 
   if (selectedTokenSymbol === "ETH") {
