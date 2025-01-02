@@ -43,12 +43,14 @@ export interface BridgeChain {
   manualWallet?: ManualWalletProps;
 }
 
-export type BridgeTokenSymbols = "wETH" | "ETH";
+export type BridgeTokenSymbol = "wETH" | "ETH";
+// TODO: allow for custom tokens
+export type BridgeTokenId = 2;
 
 export interface BridgeToken {
   address?: `0x${string}`;
-  symbol: BridgeTokenSymbols;
+  symbol: BridgeTokenSymbol;
   decimals: number;
-  tokenID: number;
+  tokenId: BridgeTokenId;
   icon: string;
 }

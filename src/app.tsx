@@ -1,4 +1,4 @@
-import { Bridge, BridgeConfig } from "sui-bridge-react";
+import { Bridge, BridgeConfig } from "@aftermath/sui-bridge-react";
 import "./app.css";
 
 export function App() {
@@ -8,6 +8,7 @@ export function App() {
     },
     appKitProjectId: import.meta.env.VITE_APP_KIT_PROJECT_ID as string,
     isMainnet: import.meta.env.VITE_IS_MAINNET === "false",
+    // tokenIds: [],
   };
 
   return (

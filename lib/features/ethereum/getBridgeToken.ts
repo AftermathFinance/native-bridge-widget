@@ -1,24 +1,35 @@
-import { BridgeToken, BridgeTokenSymbols } from "./types";
+import { BridgeToken, BridgeTokenId } from "./types";
 
 export interface GetBridgeTokensProps {
   isMainnet: boolean;
-  tokenList: BridgeTokenSymbols[];
+  tokenIds: BridgeTokenId[];
+  all?: boolean;
 }
 
+// TODO: Add custom tokens option
+/*
+ it’s in the BridgeConfig contract:
+
+Mainnet: https://etherscan.io/address/0x72D34Fe82c71Bf8120647518e5128e53106a1540
+
+Testnet: https://sepolia.etherscan.io/address/0x624Ddc521b3934CaFb94AA6a4fF120fc8FA45B5F
+*/
 export const getBridgeTokens = ({
   isMainnet,
-  tokenList,
+  tokenIds,
+  all,
 }: GetBridgeTokensProps): BridgeToken[] => {
+  const eth: BridgeToken = {
+    symbol: "ETH",
+    tokenId: 2,
+    decimals: 18,
+    icon: "/ETH.svg",
+  };
+
   const mainnetTokens: BridgeToken[] = [
     {
-      symbol: "ETH",
-      tokenID: 2,
-      decimals: 18,
-      icon: "/ETH.svg",
-    },
-    {
       symbol: "wETH",
-      tokenID: 2,
+      tokenId: 2,
       address: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
       decimals: 18,
       icon: "/wETH.svg",
@@ -27,45 +38,39 @@ export const getBridgeTokens = ({
 
   const sepoliaTokens: BridgeToken[] = [
     {
-      symbol: "ETH",
-      tokenID: 2,
-      decimals: 18,
-      icon: "/ETH.svg",
-    },
-    {
       symbol: "wETH",
-      tokenID: 2,
+      tokenId: 2,
       address: "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
       decimals: 18,
       icon: "/wETH.svg",
     },
   ];
 
-  if (tokenList.length === 0) {
-    return isMainnet ? mainnetTokens : sepoliaTokens;
+  if (all) {
+    return isMainnet ? [eth, ...mainnetTokens] : [eth, ...sepoliaTokens];
   }
 
-  const tokens = tokenList.map((tokenSymbol) => {
-    if (tokenSymbol === "ETH") {
-      return mainnetTokens.find((token) => token.symbol === tokenSymbol);
+  const tokens = tokenIds.map((tokenId) => {
+    if (isMainnet) {
+      return mainnetTokens.find((token) => token.tokenId === tokenId);
     }
 
-    return sepoliaTokens.find((token) => token.symbol === tokenSymbol);
+    return sepoliaTokens.find((token) => token.tokenId === tokenId);
   });
 
-  return tokens as BridgeToken[];
+  return [eth, ...tokens] as BridgeToken[];
 };
 
 export interface GetBridgeTokenProps {
   isMainnet: boolean;
-  tokenSymbol: BridgeTokenSymbols;
+  tokenSymbol: string;
 }
 
 export const getBridgeToken = ({
   isMainnet,
   tokenSymbol,
 }: GetBridgeTokenProps): BridgeToken => {
-  const tokens = getBridgeTokens({ isMainnet, tokenList: [] });
+  const tokens = getBridgeTokens({ isMainnet, tokenIds: [], all: true });
 
   const token = tokens.find((token) => token.symbol === tokenSymbol);
 

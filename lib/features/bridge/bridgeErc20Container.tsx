@@ -11,17 +11,16 @@ import { isValidDecimalString, stringNumberToInput } from "../../utils/string";
 import { getBridgeToken, getBridgeTokens } from "../ethereum/getBridgeToken";
 import { useBridgeErc20 } from "../ethereum/hooks/useBridgeErc20";
 import { useEthereum } from "../ethereum/hooks/useEthereum";
-import { useTokenList } from "../ethereum/hooks/useTokenList";
-import { BridgeTokenSymbols } from "../ethereum/types";
+import { useTokenIds } from "../ethereum/hooks/useTokenIds";
 
 interface BridgeErc20ContainerProps {
   amountToBridge: string;
   recipient: string;
   style: Style;
-  selectedTokenSymbol: BridgeTokenSymbols;
+  selectedTokenSymbol: string;
   setAmountToBridge: (amount: string) => void;
   setRecipient: (recipient: string) => void;
-  setSelectedTokenSymbol: (token: BridgeTokenSymbols) => void;
+  setSelectedTokenSymbol: (token: string) => void;
 }
 
 export const BridgeErc20Container = ({
@@ -34,7 +33,7 @@ export const BridgeErc20Container = ({
   setSelectedTokenSymbol,
 }: BridgeErc20ContainerProps) => {
   const ethereum = useEthereum();
-  const tokenList = useTokenList();
+  const tokenIds = useTokenIds();
   const { bridge, tokenBalance, allowance } = useBridgeErc20({
     amountToBridge: isValidDecimalString(amountToBridge) ? amountToBridge : "0",
     recipient,
@@ -68,7 +67,7 @@ export const BridgeErc20Container = ({
 
   const bridgeItems = getBridgeTokens({
     isMainnet: ethereum.isMainnet,
-    tokenList,
+    tokenIds,
   }).map((token) => ({
     label: token.symbol,
     icon: token.icon,
@@ -80,8 +79,7 @@ export const BridgeErc20Container = ({
       select: {
         value: bridge.amount.symbol,
         items: bridgeItems,
-        onValueChange: (value) =>
-          setSelectedTokenSymbol(value as BridgeTokenSymbols),
+        onValueChange: (value) => setSelectedTokenSymbol(value),
       },
       balanceAmount: tokenBalance.display,
       maxAmount: tokenBalance.formatted,
