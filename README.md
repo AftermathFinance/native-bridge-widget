@@ -69,6 +69,8 @@ const config: BridgeConfig = {
 };
 ```
 
+By passing an empty array, only ETH will be available.
+
 ### Customization
 
 ![Primary theme](example.png)
