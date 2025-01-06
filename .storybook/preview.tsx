@@ -4,6 +4,7 @@ import React from "react";
 import { WagmiProvider } from "wagmi";
 import { BridgeConfig } from "../lib/features/bridge/bridge";
 import { ChainProvider } from "../lib/features/ethereum/chainEthereumProvider";
+import { TokenIdsProvider } from "../lib/features/ethereum/tokenIdsProvider";
 import { initializeAppKit } from "../lib/features/ethereum/wagmiConfig";
 import "../lib/theme/theme.css";
 import "./globals.css";
@@ -41,9 +42,11 @@ const preview: Preview = {
       <ChainProvider chainEthereum={chainEthereum}>
         <WagmiProvider config={localWagmiAdapter.wagmiConfig}>
           <QueryClientProvider client={queryClient}>
-            <div className="root">
-              <Story />
-            </div>
+            <TokenIdsProvider tokenIds={[2, 4]}>
+              <div className="root">
+                <Story />
+              </div>
+            </TokenIdsProvider>
           </QueryClientProvider>
         </WagmiProvider>
       </ChainProvider>

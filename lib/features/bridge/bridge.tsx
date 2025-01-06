@@ -50,7 +50,7 @@ export const Bridge = (bridgeConfig: BridgeConfig) => {
     <ChainProvider chainEthereum={chainEthereum}>
       <WagmiProvider config={wagmiConfig}>
         <QueryClientProvider client={client}>
-          <TokenIdsProvider tokenIds={bridgeConfig.tokenIds ?? [2]}>
+          <TokenIdsProvider tokenIds={bridgeConfig.tokenIds ?? [2, 4]}>
             <BridgeContainer style={bridgeConfig.style} />
           </TokenIdsProvider>
         </QueryClientProvider>
