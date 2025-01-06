@@ -34,6 +34,13 @@ export const getBridgeTokens = ({
       decimals: 18,
       icon: "/wETH.svg",
     },
+    {
+      symbol: "USDT",
+      tokenId: 4,
+      address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      decimals: 6,
+      icon: "/USDT.svg",
+    },
   ];
 
   const sepoliaTokens: BridgeToken[] = [
@@ -43,6 +50,13 @@ export const getBridgeTokens = ({
       address: "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
       decimals: 18,
       icon: "/wETH.svg",
+    },
+    {
+      symbol: "USDT",
+      tokenId: 4,
+      address: "0x4E9D6D3dbFFc32399D514A5a03268e5860b6769d",
+      decimals: 6,
+      icon: "/USDT.svg",
     },
   ];
 

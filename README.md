@@ -56,16 +56,17 @@ const config: BridgeConfig = {
 
 Currently the library supports bridging native ETH and wETH. More tokens might be added in the future.
 
-You can customize the list of available tokens by passing optional `tokenIds` prop. By default all tokens are enabled. Native ETH is always enabled, only ERC20 tokens can be customized. Currently only wETH is supported.
+You can customize the list of available tokens by passing optional `tokenIds` prop. By default all tokens are enabled. Native ETH is always enabled, only ERC20 tokens can be customized. Currently wETH and USDT are supported.
 
 | tokenId | symbol |
 | ------- | ------ |
 | n/a     | ETH    |
 | 2       | wETH   |
+| 4       | USDT   |
 
 ```tsx
 const config: BridgeConfig = {
-  tokenIds: [2],
+  tokenIds: [2, 4],
 };
 ```
 
