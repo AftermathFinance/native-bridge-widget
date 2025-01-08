@@ -76,8 +76,6 @@ By passing an empty array, only ETH will be available.
 
 ![Primary theme](example.png)
 
-This will display the `example.png` image in your documentation.
-
 `BridgeConfig` allows you to remove the background image to make the widget flat. More customization options will be added soon.
 
 ```tsx
