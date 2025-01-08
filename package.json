@@ -1,6 +1,6 @@
 {
-  "name": "@aftermath/sui-bridge-react",
-  "version": "0.1.0",
+  "name": "@aftermath-finance/sui-bridge-react",
+  "version": "1.0.0",
   "description": "React components that allow users to bridge ETH between Ethereum and Sui networks.",
   "author": "DarkSpace.studio",
   "license": "Apache-2.0",
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/AftermathFinance/native-bridge-widget"
+    "url": "git+https://github.com/AftermathFinance/native-bridge-widget.git"
   },
   "sideEffects": [
     "**/*.css"
