@@ -9,7 +9,7 @@ This repository contains React components that allow users to bridge Ethereum an
 Library is assuming your project is using `react` and `react-dom` as dependencies.
 
 ```bash
-npm install @aftermath/sui-bridge-react
+npm install @aftermath-finance/sui-bridge-react
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ npm install @aftermath/sui-bridge-react
 Basic standalone usage.
 
 ```tsx
-import { Bridge, BridgeConfig } from "@aftermath/sui-bridge-react";
+import { Bridge, BridgeConfig } from "@aftermath-finance/sui-bridge-react";
 
 const config: BridgeConfig = {
   appKitProjectId: "your-project-id",

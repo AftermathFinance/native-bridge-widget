@@ -25,7 +25,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "lib/main.ts"),
       formats: ["es"],
-      name: "@aftermath/sui-bridge-react",
+      name: "@aftermath-finance/sui-bridge-react",
     },
     rollupOptions: {
       external: [

@@ -1,4 +1,4 @@
-import { Bridge, BridgeConfig } from "@aftermath/sui-bridge-react";
+import { Bridge, BridgeConfig } from "@aftermath-finance/sui-bridge-react";
 import "./app.css";
 
 export function App() {
